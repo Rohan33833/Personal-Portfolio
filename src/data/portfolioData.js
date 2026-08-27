@@ -33,8 +33,8 @@ export const PORTFOLIO_DATA = {
     },
     {
       "label": "Certifications",
-      "value": "4",
-      "desc": "AWS, Anthropic, Deloitte, CBA"
+      "value": "8",
+      "desc": "AWS, IBM, Anthropic, Deloitte, CBA"
     },
     {
       "label": "Projects Shipped",
@@ -394,6 +394,42 @@ export const PORTFOLIO_DATA = {
   ],
   "certifications": [
     {
+      "id": "ibm-genai-essentials",
+      "title": "Generative AI Essentials: Using LLMs to Work with Data",
+      "issuer": "IBM SkillsBuild",
+      "date": "19 AUG 2026",
+      "image": "certificate/IBM_Generative_AI_Essentials.jpg",
+      "verifyUrl": "https://www.credly.com/go/5ym0g1bt",
+      "description": "Comprehensive understanding of Generative AI fundamentals, leveraging Large Language Models (LLMs) to query, transform, and analyze enterprise datasets."
+    },
+    {
+      "id": "ibm-agentic-ai",
+      "title": "Make Agentic AI Work for You",
+      "issuer": "IBM SkillsBuild",
+      "date": "19 AUG 2026",
+      "image": "certificate/IBM_Make_Agentic_AI_Work_for_You.jpg",
+      "verifyUrl": "https://www.credly.com/go/0eFfuM0q",
+      "description": "Practical implementation of autonomous AI agent workflows, tool calling, reasoning loops, and multi-agent coordination."
+    },
+    {
+      "id": "ibm-data-fundamentals",
+      "title": "Data Fundamentals",
+      "issuer": "IBM SkillsBuild",
+      "date": "Aug 18, 2026",
+      "image": "certificate/IBM_Data_Fundamentals.jpg",
+      "verifyUrl": "https://www.credly.com/badges/d27bdfe-1f04-4bc2-8963-dabd63c231ef",
+      "description": "Foundational mastery of data architectures, database modeling, data lifecycle management, and exploratory analytics."
+    },
+    {
+      "id": "ibm-getting-started-data",
+      "title": "Getting Started with Data",
+      "issuer": "IBM SkillsBuild",
+      "date": "Aug 19, 2026",
+      "image": "certificate/IBM_Getting_Started_with_Data.jpg",
+      "verifyUrl": "https://www.credly.com/badges/2f0aecf5-2054-4a5f-962e-7fa052ca8d8c",
+      "description": "Core concepts of modern data processing, ETL pipelines, and structured querying techniques for technical decision making."
+    },
+    {
       "id": "aws-cloud",
       "title": "AWS Academy Graduate – Cloud Architecting",
       "issuer": "Amazon Web Services (AWS)",
@@ -426,5 +462,5 @@ export const PORTFOLIO_DATA = {
       "description": "Simulated software engineering tasks focused on banking technology infrastructure, security protocols, and data engineering."
     }
   ],
-  "lastModified": "2026-08-27T15:43:30.440Z"
+  "lastModified": "2026-08-27T19:16:30.000Z"
 };
