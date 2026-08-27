@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import { Mail, Phone, MapPin, Github, Linkedin, Copy, Check, Send, Sparkles } from 'lucide-react';
-import { PORTFOLIO_DATA } from '../data/portfolioData';
 import { ScrollReveal } from './ScrollReveal';
+import { recordContactSubmission } from '../utils/telemetry';
+import { usePortfolioData } from '../context/PortfolioDataContext';
 
 export const ContactSection = () => {
+  const { data: PORTFOLIO_DATA } = usePortfolioData();
   const [copiedEmail, setCopiedEmail] = useState(false);
   const [copiedPhone, setCopiedPhone] = useState(false);
   const [formSent, setFormSent] = useState(false);
@@ -24,6 +26,9 @@ export const ContactSection = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     
+    // Save to local telemetry inbox for admin viewing
+    recordContactSubmission(formData);
+
     const mailtoUrl = `mailto:${PORTFOLIO_DATA.personal.email}?subject=${encodeURIComponent(formData.subject || 'Portfolio Inquiry')}&body=${encodeURIComponent(`From: ${formData.name} (${formData.email})\n\n${formData.message}`)}`;
     window.location.href = mailtoUrl;
 

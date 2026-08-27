@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Award, Layers, Cpu, GraduationCap } from 'lucide-react';
-import { PORTFOLIO_DATA } from '../data/portfolioData';
 import { ScrollReveal } from './ScrollReveal';
+import { usePortfolioData } from '../context/PortfolioDataContext';
 
 const AnimatedCounter = ({ targetValue, isBadge }) => {
   const [displayValue, setDisplayValue] = useState('0');
@@ -62,6 +62,7 @@ const AnimatedCounter = ({ targetValue, isBadge }) => {
 };
 
 export const StatsBar = () => {
+  const { data: PORTFOLIO_DATA } = usePortfolioData();
   const getIcon = (idx) => {
     switch (idx) {
       case 0: return <GraduationCap size={22} style={{ color: 'var(--signal-green)' }} />;

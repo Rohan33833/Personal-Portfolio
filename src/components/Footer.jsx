@@ -1,8 +1,9 @@
 import React from 'react';
 import { ArrowUp, Github, Linkedin, Mail } from 'lucide-react';
-import { PORTFOLIO_DATA } from '../data/portfolioData';
+import { usePortfolioData } from '../context/PortfolioDataContext';
 
 export const Footer = () => {
+  const { data: PORTFOLIO_DATA } = usePortfolioData();
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };

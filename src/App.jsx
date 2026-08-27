@@ -9,18 +9,25 @@ import { HighlightsSection } from './components/HighlightsSection';
 import { ExperienceSection } from './components/ExperienceSection';
 import { CertificationsSection } from './components/CertificationsSection';
 import { InteractiveTerminal } from './components/InteractiveTerminal';
+import { AdminConsoleModal } from './components/AdminConsoleModal';
 import { ContactSection } from './components/ContactSection';
 import { Footer } from './components/Footer';
 import { CursorSpotlight } from './components/CursorSpotlight';
 import { LoadingScreen } from './components/LoadingScreen';
 import { DevToolsGuard } from './components/DevToolsGuard';
 import { Terminal, Command } from 'lucide-react';
+import { recordVisit } from './utils/telemetry';
+import { PortfolioDataProvider } from './context/PortfolioDataContext';
 
-export function App() {
+function PortfolioApp() {
   const [terminalOpen, setTerminalOpen] = useState(false);
+  const [adminOpen, setAdminOpen] = useState(false);
   const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
+    // Record page visit session
+    recordVisit();
+
     const handleKeyDown = (e) => {
       if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'k') {
         e.preventDefault();
@@ -100,6 +107,15 @@ export function App() {
       <InteractiveTerminal
         isOpen={terminalOpen}
         onClose={() => setTerminalOpen(false)}
+        onUnlockAdmin={() => {
+          setTerminalOpen(false);
+          setAdminOpen(true);
+        }}
+      />
+
+      <AdminConsoleModal
+        isOpen={adminOpen}
+        onClose={() => setAdminOpen(false)}
       />
 
       <style>{`
@@ -110,6 +126,14 @@ export function App() {
         }
       `}</style>
     </div>
+  );
+}
+
+export function App() {
+  return (
+    <PortfolioDataProvider>
+      <PortfolioApp />
+    </PortfolioDataProvider>
   );
 }
 

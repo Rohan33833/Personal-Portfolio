@@ -1,28 +1,30 @@
 import React, { useState } from 'react';
 import { 
-  Github, ExternalLink, Activity, CreditCard, Cpu, ShieldAlert, MapPin, QrCode, MessageSquare, CheckCircle2, ChevronRight, X
+  Github, ExternalLink, Activity, CreditCard, Cpu, ShieldAlert, MapPin, QrCode, MessageSquare, CheckCircle2, ChevronRight, X, Code2
 } from 'lucide-react';
-import { PORTFOLIO_DATA } from '../data/portfolioData';
 import { ScrollReveal } from './ScrollReveal';
+import { usePortfolioData } from '../context/PortfolioDataContext';
 
 export const ProjectsSection = () => {
+  const { data: portfolioData } = usePortfolioData();
   const [activeFilter, setActiveFilter] = useState('All');
   const [selectedProject, setSelectedProject] = useState(null);
 
   const categories = ['All', 'Full-Stack', 'Mobile', 'Embedded & Hardware'];
 
   const iconMap = {
-    Activity, CreditCard, Cpu, ShieldAlert, MapPin, QrCode, MessageSquare
+    Activity, CreditCard, Cpu, ShieldAlert, MapPin, QrCode, MessageSquare, Code2
   };
 
   const renderProjectIcon = (iconName) => {
-    const IconComp = iconMap[iconName] || Activity;
+    const IconComp = iconMap[iconName] || Code2;
     return <IconComp size={22} />;
   };
 
+  const projectsList = portfolioData.projects || [];
   const filteredProjects = activeFilter === 'All'
-    ? PORTFOLIO_DATA.projects
-    : PORTFOLIO_DATA.projects.filter(p => p.category.includes(activeFilter));
+    ? projectsList
+    : projectsList.filter(p => (p.category || '').toLowerCase().includes(activeFilter.toLowerCase()));
 
   return (
     <section id="projects" style={{ padding: '6rem 0' }}>

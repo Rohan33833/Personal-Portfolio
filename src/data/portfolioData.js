@@ -1,5 +1,7 @@
 // Rohan Prajapati — Portfolio Central Data Store
 
+const BASE = import.meta.env.BASE_URL;
+
 export const PORTFOLIO_DATA = {
   personal: {
     fullName: "Rohan Prajapati",
@@ -15,8 +17,8 @@ export const PORTFOLIO_DATA = {
     email: "r0164ohan@gmail.com",
     phone: "+91 7276633833",
     location: "Virar, Maharashtra, India",
-    profilePic: "/Portfolio_pic.png",
-    resumePdf: "/Rohan_Prajapati_CV.pdf",
+    profilePic: `${BASE}Portfolio_pic.png`,
+    resumePdf: `${BASE}Rohan_Prajapati_CV.pdf`,
     introParagraph: "I build full-stack, real-time systems end to end — from database design and backend architecture to secure authentication and live UI updates. My work spans healthcare queue management, fintech invoicing, mobile safety tools, voice-interface and robotics software, and a quadcopter I built from the frame up. I'm drawn to the problems underneath the demo — race conditions, security gaps, manual processes that shouldn't be manual anymore. Currently interning as a software engineer while finishing my degree, shipping features across web, mobile, and embedded systems. If you need someone who can take a system from schema to shipped, let's talk.",
     aboutParagraph: "I'm Rohan, a Computer Science & Engineering student at Universal College of Engineering, currently working as a software engineering intern on robotics and voice-interface software. Most of what I build starts from a real operational problem rather than a tutorial: a hospital front desk that needed live queuing instead of paper tokens, a freelancer invoicing flow that needed proper SSO and GST logic, a device that needed to recognize a spoken wake word reliably. My toolkit centers on React, Flutter, and Node.js on the software side, PostgreSQL, MongoDB, Firebase, and Redis for data, and Git for everything in between — plus a working knowledge of Arduino and embedded control from building a quadcopter from scratch. I'm as comfortable debugging a PostgreSQL advisory lock under concurrent load as I am wiring an ESC to a flight controller.",
     mission: "To build software that fixes a real operational problem — not just software that demos well.",
@@ -252,7 +254,7 @@ export const PORTFOLIO_DATA = {
       title: "AWS Academy Graduate – Cloud Architecting",
       issuer: "Amazon Web Services (AWS)",
       date: "August 2026",
-      image: "/certificate/AWS_Academy_Graduate___Cloud_Architecting___Training_Badge_Badge20260804-8-ealt6q_page-0001.jpg",
+      image: `${BASE}certificate/AWS_Academy_Graduate___Cloud_Architecting___Training_Badge_Badge20260804-8-ealt6q_page-0001.jpg`,
       description: "Demonstrates expertise in designing scalable, resilient, and fault-tolerant cloud architectures on AWS infrastructure."
     },
     {
@@ -260,7 +262,7 @@ export const PORTFOLIO_DATA = {
       title: "Claude Code in Action",
       issuer: "Anthropic",
       date: "2026",
-      image: "/certificate/Anthropic certificate claude code in action_page-0001.jpg",
+      image: `${BASE}certificate/Anthropic certificate claude code in action_page-0001.jpg`,
       description: "Advanced competency in leveraging Anthropic AI models, prompt engineering, and agentic code synthesis."
     },
     {
@@ -268,7 +270,7 @@ export const PORTFOLIO_DATA = {
       title: "Deloitte Australia Technology Job Simulation",
       issuer: "Forage",
       date: "August 2026",
-      image: "/certificate/Deloitte_completion_certificate_page-0001.jpg",
+      image: `${BASE}certificate/Deloitte_completion_certificate_page-0001.jpg`,
       description: "Practical simulation covering technology architecture, system proposal analysis, and enterprise software evaluation."
     },
     {
@@ -276,7 +278,7 @@ export const PORTFOLIO_DATA = {
       title: "Commonwealth Bank Tech Explorer Job Simulation",
       issuer: "Forage",
       date: "August 2026",
-      image: "/certificate/Commonwealth_bank_completion_certificate_page-0001.jpg",
+      image: `${BASE}certificate/Commonwealth_bank_completion_certificate_page-0001.jpg`,
       description: "Simulated software engineering tasks focused on banking technology infrastructure, security protocols, and data engineering."
     }
   ]

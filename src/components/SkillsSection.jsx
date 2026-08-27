@@ -3,10 +3,11 @@ import {
   Code2, Smartphone, Tablet, Layout, Server, Network, Zap, Cpu,
   Database, FileText, Layers, Flame, Terminal, Shield, Lock, GitBranch, ShieldCheck, Key
 } from 'lucide-react';
-import { PORTFOLIO_DATA } from '../data/portfolioData';
 import { ScrollReveal } from './ScrollReveal';
+import { usePortfolioData } from '../context/PortfolioDataContext';
 
 export const SkillsSection = () => {
+  const { data: portfolioData } = usePortfolioData();
   const iconMap = {
     Code2, Smartphone, Tablet, Layout, Server, Network, Zap, Cpu,
     Database, FileText, Layers, Flame, Terminal, Shield, Lock, GitBranch, ShieldCheck, Key
@@ -31,7 +32,7 @@ export const SkillsSection = () => {
         </ScrollReveal>
 
         <div className="grid-2" style={{ gap: '2rem' }}>
-          {PORTFOLIO_DATA.skills.map((group, groupIdx) => (
+          {(portfolioData.skills || []).map((group, groupIdx) => (
             <ScrollReveal key={group.category} direction="up" delay={groupIdx * 120}>
               <div
                 className="glass-card"

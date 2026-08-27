@@ -1,20 +1,23 @@
 import React, { useState, useEffect } from 'react';
 import { Github, Linkedin, Mail, ArrowRight, ShieldCheck, Terminal, MapPin } from 'lucide-react';
-import { PORTFOLIO_DATA } from '../data/portfolioData';
 import { Hero3DCanvas } from './3d/Hero3DCanvas';
+import { usePortfolioData } from '../context/PortfolioDataContext';
 
 export const HeroSection = ({ onOpenTerminal, isLoaded = true }) => {
+  const { data: PORTFOLIO_DATA } = usePortfolioData();
   const [titleIndex, setTitleIndex] = useState(0);
   const [scrollY, setScrollY] = useState(0);
   const [tilt, setTilt] = useState({ x: 0, y: 0 });
   const [isHovered, setIsHovered] = useState(false);
 
+  const designations = PORTFOLIO_DATA.personal?.designations || ['Full-Stack Developer'];
+
   useEffect(() => {
     const interval = setInterval(() => {
-      setTitleIndex((prev) => (prev + 1) % PORTFOLIO_DATA.personal.designations.length);
+      setTitleIndex((prev) => (prev + 1) % designations.length);
     }, 3200);
     return () => clearInterval(interval);
-  }, []);
+  }, [designations.length]);
 
   useEffect(() => {
     const handleScroll = () => {

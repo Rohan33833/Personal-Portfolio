@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { Terminal, Download, Menu, X, Code, ExternalLink } from 'lucide-react';
-import { PORTFOLIO_DATA } from '../data/portfolioData';
+import { trackResumeDownload } from '../utils/telemetry';
+import { usePortfolioData } from '../context/PortfolioDataContext';
 
 export const Navbar = ({ onOpenTerminal, isLoaded = true }) => {
+  const { data: PORTFOLIO_DATA } = usePortfolioData();
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('');
@@ -151,6 +153,7 @@ export const Navbar = ({ onOpenTerminal, isLoaded = true }) => {
             href={PORTFOLIO_DATA.personal.resumePdf}
             target="_blank"
             rel="noopener noreferrer"
+            onClick={() => trackResumeDownload('Navbar')}
             className="btn btn-primary"
             style={{ padding: '0.5rem 1rem', fontSize: '0.85rem' }}
           >

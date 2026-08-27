@@ -1,9 +1,10 @@
 import React from 'react';
 import { Briefcase, GraduationCap, Calendar, MapPin, CheckCircle2, Award } from 'lucide-react';
-import { PORTFOLIO_DATA } from '../data/portfolioData';
 import { ScrollReveal } from './ScrollReveal';
+import { usePortfolioData } from '../context/PortfolioDataContext';
 
 export const ExperienceSection = () => {
+  const { data: PORTFOLIO_DATA } = usePortfolioData();
   return (
     <section id="experience" style={{ padding: '6rem 0' }}>
       <div className="container">

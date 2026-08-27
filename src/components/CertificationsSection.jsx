@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import { Award, ExternalLink, ZoomIn, X, Calendar, ShieldCheck } from 'lucide-react';
-import { PORTFOLIO_DATA } from '../data/portfolioData';
 import { ScrollReveal } from './ScrollReveal';
+import { usePortfolioData } from '../context/PortfolioDataContext';
 
 export const CertificationsSection = () => {
+  const { data: PORTFOLIO_DATA } = usePortfolioData();
   const [selectedCert, setSelectedCert] = useState(null);
 
   return (

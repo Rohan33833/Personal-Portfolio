@@ -1,9 +1,10 @@
 import React from 'react';
 import { ShieldCheck, Cpu, Database, AlertCircle, ArrowUpRight } from 'lucide-react';
-import { PORTFOLIO_DATA } from '../data/portfolioData';
 import { ScrollReveal } from './ScrollReveal';
+import { usePortfolioData } from '../context/PortfolioDataContext';
 
 export const HighlightsSection = () => {
+  const { data: PORTFOLIO_DATA } = usePortfolioData();
   return (
     <section id="highlights" style={{ padding: '6rem 0', background: 'rgba(18, 24, 32, 0.6)', borderTop: '1px solid var(--border-color)', borderBottom: '1px solid var(--border-color)' }}>
       <div className="container">
@@ -18,7 +19,7 @@ export const HighlightsSection = () => {
         </ScrollReveal>
 
         <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
-          {PORTFOLIO_DATA.highlights.map((item, index) => (
+          {(PORTFOLIO_DATA.highlights || []).map((item, index) => (
             <ScrollReveal key={item.title} direction="up" delay={index * 150}>
               <div
                 className="glass-card"

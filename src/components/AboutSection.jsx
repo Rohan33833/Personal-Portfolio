@@ -1,9 +1,10 @@
 import React from 'react';
 import { Target, Compass, Terminal, Cpu, Database, Server, Wrench } from 'lucide-react';
-import { PORTFOLIO_DATA } from '../data/portfolioData';
 import { ScrollReveal } from './ScrollReveal';
+import { usePortfolioData } from '../context/PortfolioDataContext';
 
 export const AboutSection = () => {
+  const { data: PORTFOLIO_DATA } = usePortfolioData();
   return (
     <section id="about" style={{ padding: '6rem 0', position: 'relative' }}>
       <div className="container">
