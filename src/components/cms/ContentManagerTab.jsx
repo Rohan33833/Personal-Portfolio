@@ -57,7 +57,7 @@ export const ContentManagerTab = ({ onFeedback }) => {
     setIsEditorOpen(true);
   };
 
-  const handleSaveProject = (savedProj) => {
+  const handleSaveProject = async (savedProj) => {
     const existing = data.projects || [];
     const idx = existing.findIndex((p) => p.id === savedProj.id);
 
@@ -69,20 +69,24 @@ export const ContentManagerTab = ({ onFeedback }) => {
       updatedProjects = [savedProj, ...existing];
     }
 
-    setData({ ...data, projects: updatedProjects });
+    const nextData = { ...data, projects: updatedProjects };
+    setData(nextData);
     setIsEditorOpen(false);
-    onFeedback('Project draft updated. Click "Publish Live Changes" to save to database.');
+    await saveAndPublish(nextData);
+    onFeedback('✅ Project saved & published permanently!');
   };
 
-  const handleDeleteProject = (id) => {
+  const handleDeleteProject = async (id) => {
     if (window.confirm(`Delete project "${id}"?`)) {
       const updated = (data.projects || []).filter((p) => p.id !== id);
-      setData({ ...data, projects: updated });
-      onFeedback('Project removed from draft.');
+      const nextData = { ...data, projects: updated };
+      setData(nextData);
+      await saveAndPublish(nextData);
+      onFeedback('Project deleted & changes saved.');
     }
   };
 
-  const handleMoveProject = (idx, direction) => {
+  const handleMoveProject = async (idx, direction) => {
     const projs = [...(data.projects || [])];
     const targetIdx = idx + direction;
     if (targetIdx < 0 || targetIdx >= projs.length) return;
@@ -91,7 +95,9 @@ export const ContentManagerTab = ({ onFeedback }) => {
     projs[idx] = projs[targetIdx];
     projs[targetIdx] = temp;
 
-    setData({ ...data, projects: projs });
+    const nextData = { ...data, projects: projs };
+    setData(nextData);
+    await saveAndPublish(nextData);
   };
 
   // Certificates CRUD
@@ -105,7 +111,7 @@ export const ContentManagerTab = ({ onFeedback }) => {
     setIsCertEditorOpen(true);
   };
 
-  const handleSaveCert = (savedCert) => {
+  const handleSaveCert = async (savedCert) => {
     const existing = data.certifications || [];
     const idx = existing.findIndex((c) => c.id === savedCert.id);
 
@@ -117,20 +123,24 @@ export const ContentManagerTab = ({ onFeedback }) => {
       updatedCerts = [savedCert, ...existing];
     }
 
-    setData({ ...data, certifications: updatedCerts });
+    const nextData = { ...data, certifications: updatedCerts };
+    setData(nextData);
     setIsCertEditorOpen(false);
-    onFeedback('Certificate draft updated. Click "Publish Live Changes" to save to database.');
+    await saveAndPublish(nextData);
+    onFeedback('✅ Certificate saved & published permanently!');
   };
 
-  const handleDeleteCert = (id) => {
+  const handleDeleteCert = async (id) => {
     if (window.confirm(`Delete certificate "${id}"?`)) {
       const updated = (data.certifications || []).filter((c) => c.id !== id);
-      setData({ ...data, certifications: updated });
-      onFeedback('Certificate removed from draft.');
+      const nextData = { ...data, certifications: updated };
+      setData(nextData);
+      await saveAndPublish(nextData);
+      onFeedback('Certificate removed & changes saved.');
     }
   };
 
-  const handleMoveCert = (idx, direction) => {
+  const handleMoveCert = async (idx, direction) => {
     const certs = [...(data.certifications || [])];
     const targetIdx = idx + direction;
     if (targetIdx < 0 || targetIdx >= certs.length) return;
@@ -139,7 +149,9 @@ export const ContentManagerTab = ({ onFeedback }) => {
     certs[idx] = certs[targetIdx];
     certs[targetIdx] = temp;
 
-    setData({ ...data, certifications: certs });
+    const nextData = { ...data, certifications: certs };
+    setData(nextData);
+    await saveAndPublish(nextData);
   };
 
   // Resume / File Upload
