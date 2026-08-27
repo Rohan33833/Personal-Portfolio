@@ -25,16 +25,9 @@ const AUTHORIZED_TRIGGER_HASHES = new Set([
   '787600ebe6d6c75b6bc0b2db0bfd6aeec78897b67d3192e2208bc8b714237841',
 ]);
 
-// Authorized passcode hashes
+// Authorized passcode hash for 'rohan2026'
 const AUTHORIZED_PASSWORD_HASHES = new Set([
-  '9407b28cf7f7eed483e1ed5360cfe97235891b14d6a1b687c91904dbe6a5ec7b',
-  '175fe25e87635a040e8e2177232def9001bf05d757cee3848ecc112006426091',
-  '6051fc84a7a0d74c225fb18a496b09952da5642e60723ecae543298edd7d82d6',
-  '240be518fabd2724ddb6f04eeb1da5967448d7e831c08c8fa822809f74c720a9',
-  '8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918',
-  '787600ebe6d6c75b6bc0b2db0bfd6aeec78897b67d3192e2208bc8b714237841',
-  '4813494d137e1631bba301d5acab6e7bb7aa74ce1185d456565ef51d737677b2',
-  '0e6a8e0b849ed9b064c5a25e1ee5592f427e3eb9d250e42069ce46147d00e8d4',
+  '9407b28cf7f7eed483e1ed5360cfe97235891b14d6a1b687c91904dbe6a5ec7b', // rohan2026
 ]);
 
 const SESSION_AUTH_KEY = 'portfolio_admin_auth_token';

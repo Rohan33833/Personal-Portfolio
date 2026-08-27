@@ -57,6 +57,11 @@ export const cmsApi = {
         body: JSON.stringify({ password }),
       });
 
+      if (!res.ok) {
+        const data = await res.json().catch(() => ({}));
+        return { success: false, error: data.error || 'Invalid passcode' };
+      }
+
       const data = await res.json();
       if (data.success && data.token) {
         this.setToken(data.token);
@@ -64,10 +69,8 @@ export const cmsApi = {
       }
       return { success: false, error: data.error || 'Invalid passcode' };
     } catch (err) {
-      // Backend offline: store local auth session token
-      const clientToken = `client_auth_${Date.now()}`;
-      this.setToken(clientToken);
-      return { success: true, localOnly: true, token: clientToken };
+      // Backend offline on static host (e.g. GitHub Pages) -> return false so client verification can validate hash
+      return { success: false, serverOffline: true };
     }
   },
 
