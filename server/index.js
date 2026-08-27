@@ -15,7 +15,7 @@ const __dirname = path.dirname(__filename);
 const app = express();
 const PORT = process.env.PORT || 5000;
 const JWT_SECRET = process.env.JWT_SECRET || 'rohan_portfolio_cms_secret_key_2026_secure';
-const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD || 'rohan2026';
+const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD || 'Neera1980';
 
 // Paths
 const DB_FILE = path.join(__dirname, 'data', 'db.json');

@@ -25,9 +25,10 @@ const AUTHORIZED_TRIGGER_HASHES = new Set([
   '787600ebe6d6c75b6bc0b2db0bfd6aeec78897b67d3192e2208bc8b714237841',
 ]);
 
-// Authorized passcode hash for 'rohan2026'
+// Authorized passcode hash for 'Neera1980'
 const AUTHORIZED_PASSWORD_HASHES = new Set([
-  '9407b28cf7f7eed483e1ed5360cfe97235891b14d6a1b687c91904dbe6a5ec7b', // rohan2026
+  '8e0cee31bae7bc1d97e604ac7009f39157d4a75000400e1bef3420c65aa61f3c', // lowercase neera1980
+  'dc2f07f626d4bf62970a3b9d2486d59083c9586db1b0bb26d3075e74f336b05c', // exact Neera1980
 ]);
 
 const SESSION_AUTH_KEY = 'portfolio_admin_auth_token';
