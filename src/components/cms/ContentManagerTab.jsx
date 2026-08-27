@@ -18,6 +18,7 @@ import {
   Sparkles,
   ExternalLink,
   ZoomIn,
+  Download,
 } from 'lucide-react';
 import { usePortfolioData } from '../../context/PortfolioDataContext';
 import { ProjectEditorModal } from './ProjectEditorModal';
@@ -241,6 +242,17 @@ export const ContentManagerTab = ({ onFeedback }) => {
     }
   };
 
+  const handleExportDataJson = () => {
+    const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(data, null, 2));
+    const downloadAnchor = document.createElement('a');
+    downloadAnchor.setAttribute("href", dataStr);
+    downloadAnchor.setAttribute("download", "portfolioData.json");
+    document.body.appendChild(downloadAnchor);
+    downloadAnchor.click();
+    downloadAnchor.remove();
+    onFeedback('📥 Downloaded portfolioData.json! Run "npm run deploy" to publish globally.');
+  };
+
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
       {/* CMS Sub-Navbar & Global Save Bar */}
@@ -296,13 +308,23 @@ export const ContentManagerTab = ({ onFeedback }) => {
 
         <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem' }}>
           <button
+            onClick={handleExportDataJson}
+            className="btn btn-secondary"
+            style={{ padding: '0.35rem 0.65rem', fontSize: '0.75rem', gap: '0.3rem' }}
+            title="Download JSON backup of portfolio content"
+          >
+            <Download size={12} />
+            <span>Export Data</span>
+          </button>
+
+          <button
             onClick={resetToDefault}
             className="btn btn-secondary"
             style={{ padding: '0.35rem 0.65rem', fontSize: '0.75rem', gap: '0.3rem' }}
             title="Reset to default seed data"
           >
             <RotateCcw size={12} />
-            <span>Reset Defaults</span>
+            <span>Reset</span>
           </button>
 
           <button
@@ -312,7 +334,7 @@ export const ContentManagerTab = ({ onFeedback }) => {
             style={{ padding: '0.45rem 1rem', fontSize: '0.78rem', gap: '0.4rem' }}
           >
             <Save size={14} />
-            <span>{isSaving ? 'Saving to Database...' : 'Publish Live Changes'}</span>
+            <span>{isSaving ? 'Saving...' : 'Publish Live Changes'}</span>
           </button>
         </div>
       </div>

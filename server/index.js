@@ -6,6 +6,7 @@ import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import dotenv from 'dotenv';
+import { syncDbToCodebase } from './syncDataToCodebase.js';
 
 dotenv.config();
 
@@ -51,6 +52,7 @@ function readDb() {
 function writeDb(data) {
   try {
     fs.writeFileSync(DB_FILE, JSON.stringify(data, null, 2), 'utf-8');
+    syncDbToCodebase();
     return true;
   } catch (err) {
     console.error('Error writing DB:', err);
